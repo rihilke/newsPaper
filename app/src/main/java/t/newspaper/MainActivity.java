@@ -1,10 +1,7 @@
 package t.newspaper;
 
-import android.content.Intent;
-import android.os.Build;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     private List<Article> articles = new ArrayList<>();
     private RecyclerView recyclerView;
     private Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
     private Button btnRetry;
     private RelativeLayout errorLayout;
     private TextView errorTitle, errorMessage;
@@ -38,13 +34,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recyclerView);
-//        layoutManager = new LinearLayoutManager(MainActivity.this);
-//        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        LoadJson("test");
+        LoadJson("tokyo");
 
         errorLayout = findViewById(R.id.errorLayout);
         errorTitle = findViewById(R.id.errorTitle);
@@ -62,11 +55,11 @@ public class MainActivity extends AppCompatActivity {
 
         if (keyword.length() > 0 ){
             call = apiInterface.getNewsSearch(keyword, language, "publishedAt", API_KEY);
-            System.out.println("published");
-            System.out.println(call.toString());
+//            System.out.println("published");
+//            System.out.println(country + " " + language);
         } else {
             call = apiInterface.getNews(country, API_KEY);
-            System.out.println(country);
+//            System.out.println(country);
         }
 
         call.enqueue(new Callback<News>() {
@@ -79,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     articles = response.body().getArticle();
-                    System.out.println(articles.toString());
+//                    System.out.println(articles.toString());
                     adapter = new Adapter(articles, MainActivity.this);
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
@@ -102,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
                     showErrorMessage(
                             "Please Try Again!\n",
                                     errorCode);
-
                 }
             }
 
@@ -117,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /*
     private void initListener(){
 
         adapter.setOnItemClickListener(new Adapter.OnItemClickListener() {
@@ -140,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
+*/
 
     private void showErrorMessage( String title, String message){
 
