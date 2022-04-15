@@ -1,5 +1,7 @@
 package t.newspaper;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         errorTitle = findViewById(R.id.errorTitle);
         errorMessage = findViewById(R.id.errorMessage);
         btnRetry = findViewById(R.id.btnRetry);
+
     }
 
     public void LoadJson(final String keyword){
@@ -151,4 +154,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 }

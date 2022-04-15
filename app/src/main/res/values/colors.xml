@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="back_color">#fffff0</color> <!--Слоновая кость-->
+
+    <color name="textTitle">#262626</color>
+    <color name="textDesc">#4e4e4e</color>
+    <color name="texts">#afafaf</color>
+
 </resources>

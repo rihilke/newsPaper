@@ -4,25 +4,29 @@
         android:layout_height="match_parent"
         android:id="@+id/errorLayout"
               android:orientation="horizontal"
+                android:gravity="center"
 >
 
 
-    <TextView
-            android:text="errorTitle"
+    <Button
+            android:text="Reload"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/errorTitle"
-            android:layout_weight="1"/>
+            android:id="@+id/btnRetry"
+           />
     <TextView
             android:text="errorMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/errorMessage"
-            android:layout_weight="1"/>
-    <Button
-            android:text="Button"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/btnRetry"
+    />
+    <TextView
+            android:text="errorTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnRetry"
-            android:layout_weight="1"/>
+            android:id="@+id/errorTitle"
+            android:layout_above="@+id/btnRetry"
+            android:layout_marginBottom="10dp" />
 </RelativeLayout>

@@ -1,10 +1,13 @@
 package t.newspaper;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +18,7 @@ import com.bumptech.glide.request.RequestOptions;
 import t.newspaper.models.Article;
 
 import java.util.List;
+import java.util.Random;
 
 
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
@@ -57,7 +61,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
         holder.title.setText(model.getTitle());
         holder.desc.setText(model.getDescription());
         holder.source.setText(model.getSource().getName());
-        holder.time.setText(" \u2022 " + Utils.DateToTimeFormat(model.getPublishedAt()));
+        holder.time.setText(Utils.DateToTimeFormat(model.getPublishedAt()));
         holder.published_ad.setText(Utils.DateFormat(model.getPublishedAt()));
         holder.author.setText(model.getAuthor());
     }
@@ -103,5 +107,4 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder>{
   //          onItemClickListener.onItemClick(v, getAdapterPosition());
         }
     }
-
 }
