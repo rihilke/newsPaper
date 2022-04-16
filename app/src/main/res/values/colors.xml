@@ -10,8 +10,8 @@
 
     <color name="back_color">#fffff0</color> <!--Слоновая кость-->
 
-    <color name="textTitle">#262626</color>
-    <color name="textDesc">#4e4e4e</color>
-    <color name="texts">#afafaf</color>
+    <color name="textTitle">#343430</color>
+    <color name="textDesc">#6e6e65</color>
+    <color name="texts">#a2a290</color>
 
 </resources>

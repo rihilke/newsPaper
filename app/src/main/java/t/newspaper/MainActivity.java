@@ -1,7 +1,5 @@
 package t.newspaper;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -39,20 +37,26 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        LoadJson("tokyo");
+        LoadJson("Java");
 
         errorLayout = findViewById(R.id.errorLayout);
         errorTitle = findViewById(R.id.errorTitle);
         errorMessage = findViewById(R.id.errorMessage);
         btnRetry = findViewById(R.id.btnRetry);
 
+
     }
 
     public void LoadJson(final String keyword){
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
+        /*
         String country = Utils.getCountry();
         String language = Utils.getLanguage();
+*/
+        String country = "ru";
+        String language = "ru";
+
 
         Call<News> call;
 
