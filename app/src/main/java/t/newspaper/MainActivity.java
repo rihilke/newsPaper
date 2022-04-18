@@ -1,9 +1,7 @@
 package t.newspaper;
 
 import android.view.View;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnRetry;
     private RelativeLayout errorLayout;
     private TextView errorTitle, errorMessage;
-
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,18 +41,38 @@ public class MainActivity extends AppCompatActivity {
         errorTitle = findViewById(R.id.errorTitle);
         errorMessage = findViewById(R.id.errorMessage);
         btnRetry = findViewById(R.id.btnRetry);
+        searchView = (SearchView) findViewById(R.id.search);
 
+        searchView.setQueryHint("Search Latest News...");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if (query.length() > 0){
+                    LoadJson(query);
+                }
+                else {
+                    LoadJson("Java");
+                }
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
     }
 
     public void LoadJson(final String keyword){
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
-
+        /*
         String country = Utils.getCountry();
         String language = Utils.getLanguage();
+        */
 
-
+        String country = "ru";
+        String language = "ru";
 
         Call<News> call;
 
@@ -105,13 +123,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<News> call, Throwable t) {
-
                 showErrorMessage(
                         "Network failure, Please Try Again\n",
                                 t.toString());
             }
         });
-
     }
 
     /*
@@ -132,11 +148,8 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("author",  article.getAuthor());
 
                 startActivity(intent);
-
-
             }
         });
-
     }
 */
 
